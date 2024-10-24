@@ -1,0 +1,58 @@
+Create Database SQL_Practice;
+Use SQL_Practice;
+
+CREATE TABLE employee (
+    employee_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_name TEXT,
+    street TEXT,
+    city TEXT
+);
+
+CREATE TABLE works (
+    work_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_id INTEGER,
+    company_name TEXT,
+    salary REAL,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
+CREATE TABLE company (
+    company_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    company_name TEXT,
+    city TEXT
+);
+
+CREATE TABLE manager (
+    manager_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_id INTEGER,
+    manager_name TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
+INSERT INTO employee (employee_name, street, city) VALUES
+('Alice', '123 Maple St', 'Springfield'),
+('Bob', '456 Oak St', 'Shelbyville'),
+('Charlie', '789 Pine St', 'Springfield'),
+('David', '101 Elm St', 'Shelbyville'),
+('Eve', '202 Birch St', 'Springfield');
+
+INSERT INTO works (employee_id, company_name, salary) VALUES
+(1, 'TechCorp', 75000),
+(2, 'BizInc', 60000),
+(3, 'TechCorp', 80000),
+(4, 'BizInc', 65000),
+(5, 'TechCorp', 72000);
+
+INSERT INTO company (company_name, city) VALUES
+('TechCorp', 'Springfield'),
+('BizInc', 'Shelbyville'),
+('InnovateX', 'Springfield'),
+('FinanceCo', 'Shelbyville'),
+('HealthPlus', 'Springfield');
+
+INSERT INTO manager (employee_id, manager_name) VALUES
+(1, 'Charlie'),
+(2, 'David'),
+(3, 'Eve'),
+(4, 'Frank'),
+(5, 'Grace');
