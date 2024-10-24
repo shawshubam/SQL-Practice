@@ -1,69 +1,58 @@
--- Create the employee table
+Create Database SQL_Practice;
+Use SQL_Practice;
+
 CREATE TABLE employee (
-    employee_name VARCHAR(50),
-    street VARCHAR(100),
-    city VARCHAR(50)
+    employee_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_name TEXT,
+    street TEXT,
+    city TEXT
 );
 
--- Insert sample data into the employee table
+CREATE TABLE works (
+    work_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_id INTEGER,
+    company_name TEXT,
+    salary REAL,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
+CREATE TABLE company (
+    company_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    company_name TEXT,
+    city TEXT
+);
+
+CREATE TABLE manager (
+    manager_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    employee_id INTEGER,
+    manager_name TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
 INSERT INTO employee (employee_name, street, city) VALUES
 ('Alice', '123 Maple St', 'Springfield'),
 ('Bob', '456 Oak St', 'Shelbyville'),
 ('Charlie', '789 Pine St', 'Springfield'),
 ('David', '101 Elm St', 'Shelbyville'),
-('Eve', '202 Birch St', 'Springfield'),
-('Frank', '303 Cedar St', 'Shelbyville'),
-('Grace', '404 Walnut St', 'Springfield'),
-('Hank', '505 Ash St', 'Shelbyville'),
-('Ivy', '606 Cherry St', 'Springfield'),
-('Jack', '707 Chestnut St', 'Shelbyville');
+('Eve', '202 Birch St', 'Springfield');
 
--- Create the works table
-CREATE TABLE works (
-    employee_name VARCHAR(50),
-    company_name VARCHAR(50),
-    salary DECIMAL(10, 2)
-);
+INSERT INTO works (employee_id, company_name, salary) VALUES
+(1, 'TechCorp', 75000),
+(2, 'BizInc', 60000),
+(3, 'TechCorp', 80000),
+(4, 'BizInc', 65000),
+(5, 'TechCorp', 72000);
 
--- Insert sample data into the works table
-INSERT INTO works (employee_name, company_name, salary) VALUES
-('Alice', 'TechCorp', 75000),
-('Bob', 'BizInc', 60000),
-('Charlie', 'TechCorp', 80000),
-('David', 'BizInc', 65000),
-('Eve', 'TechCorp', 72000),
-('Frank', 'BizInc', 58000),
-('Grace', 'TechCorp', 77000),
-('Hank', 'BizInc', 63000),
-('Ivy', 'TechCorp', 76000),
-('Jack', 'BizInc', 61000);
-
--- Create the company table
-CREATE TABLE company (
-    company_name VARCHAR(50),
-    city VARCHAR(50)
-);
-
--- Insert sample data into the company table
 INSERT INTO company (company_name, city) VALUES
 ('TechCorp', 'Springfield'),
-('BizInc', 'Shelbyville');
+('BizInc', 'Shelbyville'),
+('InnovateX', 'Springfield'),
+('FinanceCo', 'Shelbyville'),
+('HealthPlus', 'Springfield');
 
--- Create the manager table
-CREATE TABLE manager (
-    employee_name VARCHAR(50),
-    manager_name VARCHAR(50)
-);
-
--- Insert sample data into the manager table
-INSERT INTO manager (employee_name, manager_name) VALUES
-('Alice', 'Charlie'),
-('Bob', 'David'),
-('Charlie', 'Eve'),
-('David', 'Frank'),
-('Eve', 'Grace'),
-('Frank', 'Hank'),
-('Grace', 'Ivy'),
-('Hank', 'Jack'),
-('Ivy', 'Alice'),
-('Jack', 'Bob');
+INSERT INTO manager (employee_id, manager_name) VALUES
+(1, 'Charlie'),
+(2, 'David'),
+(3, 'Eve'),
+(4, 'Frank'),
+(5, 'Grace');
