@@ -1,0 +1,50 @@
+Write SQL query to get the second highest salary among all Employees?
+How can we retrieve alternate records from a table in Oracle?
+Write a SQL Query to find Max salary and Department name from each department.
+Write a SQL query to find records in Table A that are not in Table B without using NOT IN operator.
+What is the result of following query?
+Write SQL Query to find employees that have same name and email.
+Write a SQL Query to find Max salary from each department.
+Write SQL query to get the nth highest salary among all Employees.
+How can you find 10 employees with Odd number as Employee ID?
+Write a SQL Query to get the names of employees whose date of birth is between 01/01/1990 to 31/12/2000.
+Write a SQL Query to get the Quarter from date.
+Write Query to find employees with duplicate email.
+Is it safe to use ROWID to locate a record in Oracle SQL queries?
+What is a Pseudocolumn?
+What are the reasons for de-normalizing the data?
+What is the feature in SQL for writing If/Else statements?
+What is the difference between DELETE and TRUNCATE in SQL?
+What is the difference between DDL and DML commands in SQL?
+Why do we use Escape characters in SQL queries?
+What is the difference between Primary key and Unique key in SQL?
+What is the difference between INNER join and OUTER join in SQL?
+What is the difference between Left OUTER Join and Right OUTER Join?
+What is the datatype of ROWID?
+What is the difference between where clause and having clause?
+What is cardinality in SQL?
+What is Merge statement in SQL?
+What is the difference between UNION and UNION ALL?
+What will be the result of following query?
+What is the wrong with this SQL query?
+What is wrong with this query to get the list of employees not in Dept 1?
+What is the use of Execution plan in SQL?
+How many records are returned by following query?
+Write a query for this problem?
+Write SQL Query to get Employee Name, Manager ID and number of employees in the department?
+Write SQL Query to find duplicate rows in a database?
+Write SQL query to delete duplicate rows in a table?
+Why is the difference between NVL and NVL2 functions in SQL?
+What are ACID properties in a SQL transaction?
+What is the main difference between RANK and DENSE_RANK functions in Oracle?
+What is the use of WITH clause in SQL?
+Which SQL feature can be used to view data in a table sequentially?
+Write SQL Query to get Student Name and number of Students in same grade.
+Write SQL Query to get the list of grades with total score more than average score.
+What are the differences between CASE and DECODE in SQL?
+Write a Query to get Unique names of products without using DISTINCT keyword.
+Write a SQL query to maximum Zipcode from a table without using MAX or MIN aggregate functions.
+Given a list of student names and grade. Write a query to print a comma separated list of student names in a grade.
+What is the difference between Correlated and Un-correlated Sub query?
+Given an Employee table with Manager_ID as column, print First name, Manager ID and Level of employees in Organization Structure?
+Write a query to create an empty table from an existing table?
