@@ -1,0 +1,60 @@
+MOST ASKED QUESTIONS
+
+##2nd Highest Salary
+Select max(salary) from employees
+where salary < (Select max(salary) from employees);
+
+#nth Highest salary
+
+with cte as (Select salary,dense_rank() over(order by salary desc) as rn
+from employees)
+Select * from cte 
+where rn =3;
+
+
+#Salary greater than average salary
+
+Select emp_name, salary from employees
+where salary > (Select avg(salary) from employees)
+order by salary desc;
+
+#Current time date
+Select current_timestamp();
+
+Select emp_name,count(*) as count from employees
+GROUP BY EMP_NAME
+having count(*)>1;
+
+#Delete Duplicate row
+
+With cte as (Select emp_name,row_number() over(partition by emp_name) as rn from employees
+)
+Delete from cte where rn > 1;
+
+
+#How to get common record from two table
+
+Select * from table_1
+intersect
+Select * from table_2;
+
+# How to retrieve last 10 records
+
+Select * from employees
+order by emp_id desc
+limit 10;
+
+# Top 5 Salary
+with top_5_sal as (Select emp_name,Salary, dense_rank() over(order by salary desc) as rn
+from employees )
+Select * from top_5_sal where rn <6;
+
+
+Select emp_name,Salary, dense_rank() over(order by salary desc) as rn
+from employees
+limit 5;
+
+
+# Total Salary of the employee
+
+Select sum(salary) as total_salary from employees;
