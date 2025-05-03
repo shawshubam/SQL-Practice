@@ -1,0 +1,100 @@
+use Sql_interviews;
+
+-- Based on the user_activity table, write a query to retrieve the time difference between each user's most recent event and their second-to-last event, sorted in ascending order by user_identifier.
+
+-- Creare Table user_activity
+CREATE TABLE user_activity (
+    user_identifier INT,
+    event_type VARCHAR(20),
+    event_date DATE
+);
+
+-- Insert values
+INSERT INTO user_activity (user_identifier, event_type, event_date) 
+VALUES
+(1, 'Login', '2023-05-10'),
+(1, 'Logout', '2023-05-12'),
+(2, 'Login', '2023-06-01'),
+(2, 'Purchase', '2023-06-04'),
+(3, 'Login', '2023-07-15'),
+(3, 'Logout', '2023-07-16'),
+(4, 'Login', '2023-08-20'),
+(4, 'Purchase', '2023-08-25');
+
+Select * from user_activity;
+
+
+x
+
+
+WITH cte AS (
+SELECT user_identifier, event_date,
+LAG(event_date) 
+   OVER(PARTITION BY user_identifier ORDER BY event_date) AS prev_
+FROM user_activity),
+
+cte_2 AS (
+SELECT *, DATEDIFF(event_date,prev_) AS diff
+FROM cte
+WHERE prev_ IS NOT NULL)
+
+SELECT * FROM cte_2
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+-- Write a SQL query to split a full name column into first name and last name. Assume the names are separated by a single space.
+
+-- Query to create Table Persons
+CREATE TABLE persons (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100)
+);
+
+-- Insert data
+INSERT INTO persons (full_name) VALUES
+('John Doe'),
+('Emma Watson'),
+('Emily Rose Pattrick'),
+('Robert Downey'),
+('Chris Evans'),
+('Scarlett Johansson');
+
+Select full_name, left(full_name,locate(' ',full_name)-1) as first_name, 
+right(full_name,locate(' ',reverse(full_name))-1) as last_name  from persons;
+
+---------------------------------------------------------------------------------------------------------
+
+/* 
+1. Generating a Sequence of Numbers: Generate a sequence of numbers from 1 to 10.
+2. Generate a Series of Dates: Generate a list of dates between two given dates (e.g., 2024-12-15 to 2025-01-10).
+3. Calculating Factorial: Compute the factorial of a number 5 using a recursive CTE.
+
+*/
+
+
+with recursive numbers as (
+select 1 as num
+union all
+select num + 1 from numbers
+where num<10)
+
+Select * from numbers;
+
+
+with recursive dates as (
+select cast('2024-12-15' as Date) as Dates
+union all
+select Date_add(Dates, interval 1 day) from dates
+where dates < cast('2025-01-10'as date))
+
+Select * from dates;
+
+
+
+with recursive fact as (
+select 1 as num, 1 as factorial
+union all
+select num+1, factorial * (num+1) from fact
+where num<5)
+
+Select * from fact;
